@@ -104,7 +104,24 @@ const Page: NextPageWithLayout = () => {
                     DID Demo
                   </h2>
                   <Center className="vc-check-page">
-                    <Container></Container>
+                    <Container>
+                    <Card
+                      style={{
+                        border: "2px solid #805AD5",
+                      }}
+                    >
+                    <CardBody style={{ paddingBottom: 0 }}>
+                    <p>
+                      This is a demo app for using a Polygon ID VC{" "}
+                      <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
+                        (Verifiable Credential)
+                      </a>{" "}
+                      gated dapp. Prove you were born before January 1, 2023 to use
+                      the dapp
+                    </p>
+                    </CardBody>
+                    </Card>
+                    </Container>
                   </Center>
                 </div>
               ) : (
