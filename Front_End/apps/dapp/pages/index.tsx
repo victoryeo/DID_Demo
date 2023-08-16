@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { NextPageWithLayout } from './_app';
 import { Form } from 'antd';
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons';
+import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
 
 interface ILogin {
   username: string;
@@ -102,8 +103,9 @@ const Page: NextPageWithLayout = () => {
                   <h2 className="header-text">
                     DID Demo
                   </h2>
-                  {/* <h3>Sign In</h3> */}
-
+                  <Center className="vc-check-page">
+                    <Container></Container>
+                  </Center>
                 </div>
               ) : (
                 <div className="right-box">
