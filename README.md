@@ -1,0 +1,1 @@
+The DID Demo folder contains the frontend and backend code.
