@@ -11,9 +11,9 @@
   },
   "private": true,
   "dependencies": {
-    "0xsequence": "^0.43.14",
     "@0xsequence/web3modal": "^2.0.4",
     "@apollo/client": "^3.7.6",
+    "@chakra-ui/react": "^2.8.0",
     "@dethcrypto/eth-sdk": "^0.3.3",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -23,6 +23,7 @@
     "@nextui-org/react": "^1.0.0-beta.12",
     "@nrwl/next": "^15.6.3",
     "@walletconnect/web3-provider": "^1.8.0",
+    "0xsequence": "^0.43.14",
     "antd": "^5.2.2",
     "apollo3-cache-persist": "^0.14.1",
     "axios": "^1.4.0",
