@@ -6,6 +6,7 @@ import { NextPageWithLayout } from './_app';
 import { Form } from 'antd';
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons';
 import { Center, Card, Image, CardBody, Container } from "@chakra-ui/react";
+import PolygonIDVerifier from "./PolygonIDVerifier";
 
 interface ILogin {
   username: string;
@@ -24,6 +25,7 @@ const Page: NextPageWithLayout = () => {
   const [user_actErr, setUser_acountErr] = useState('');
   const [atLogin, setAtLogin] = useState(true);
   const [passwordType, setPasswordType] = useState('password');
+  const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
 
   useEffect(() => {
   }, []);
@@ -119,6 +121,19 @@ const Page: NextPageWithLayout = () => {
                       gated dapp. Prove you were born before January 1, 2023 to use
                       the dapp
                     </p>
+                    <PolygonIDVerifier
+                      publicServerURL={
+                        process.env.REACT_APP_VERIFICATION_SERVER_PUBLIC_URL
+                      }
+                      localServerURL={
+                        process.env.REACT_APP_VERIFICATION_SERVER_LOCAL_HOST_URL
+                      }
+                      credentialType={"KYCAgeCredential"}
+                      issuerOrHowToLink={
+                        "https://oceans404.notion.site/How-to-get-a-Verifiable-Credential-f3d34e7c98ec4147b6b2fae79066c4f6?pvs=4"
+                      }
+                      onVerificationResult={setProvedAccessBirthday}
+                    />
                     </CardBody>
                     </Card>
                     </Container>
