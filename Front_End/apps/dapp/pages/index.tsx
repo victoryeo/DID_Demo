@@ -28,6 +28,7 @@ const Page: NextPageWithLayout = () => {
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
 
   useEffect(() => {
+    console.log(process.env.NX_VERIFICATION_SERVER_LOCAL_HOST_URL)
   }, []);
 
   const [userDetailSignUp, setuserDetailSignUp] = useState<IUser | undefined>(
@@ -91,10 +92,10 @@ const Page: NextPageWithLayout = () => {
                     </p>
                     <PolygonIDVerifier
                       publicServerURL={
-                        process.env.REACT_APP_VERIFICATION_SERVER_PUBLIC_URL
+                        process.env.NX_VERIFICATION_SERVER_PUBLIC_URL
                       }
                       localServerURL={
-                        process.env.REACT_APP_VERIFICATION_SERVER_LOCAL_HOST_URL
+                        process.env.NX_VERIFICATION_SERVER_LOCAL_HOST_URL
                       }
                       credentialType={"KYCAgeCredential"}
                       issuerOrHowToLink={
