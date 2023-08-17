@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "dev": "next dev",
     "start": "nx serve dapp",
     "build": "yarn codegen && nx build dapp",
     "test": "nx test dapp",
@@ -31,6 +32,7 @@
     "bootstrap": "^5.2.3",
     "chart.js": "^4.3.0",
     "cookies-next": "^2.1.1",
+    "dotenv": "^16.3.1",
     "eth-sdk": "^0.2.10",
     "ethers": "5.7.2",
     "graphql": "^16.6.0",
