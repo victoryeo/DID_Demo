@@ -1,20 +1,9 @@
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  async headers() {
-      return [
-          {
-              // matching all API routes
-              source: "/api/:path*",
-              headers: [
-                  { key: "Access-Control-Allow-Credentials", value: "true" },
-                  { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
-                  { key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT" },
-                  { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
-              ]
-          }
-      ]
+module.exports = {
+    reactStrictMode: true,
+    env: {
+      NX_VERIFICATION_SERVER_LOCAL_HOST_URL: process.env.NX_VERIFICATION_SERVER_LOCAL_HOST_URL,
+      NX_WALLET_CONNECT_ID: process.env.NX_WALLET_CONNECT_ID,
+      NX_VERIFICATION_SERVER_PUBLIC_URL: process.env.NX_VERIFICATION_SERVER_PUBLIC_URL
+    }
   }
-}
-
-module.exports = nextConfig
+  
