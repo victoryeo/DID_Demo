@@ -58,8 +58,7 @@ const Page: NextPageWithLayout = () => {
   return (
     <>
       <div className="bg-info">
-        <div className="row">
-          {}
+ 
 
           <div className="col-md-6">
             <div className="right-wrap">
@@ -82,13 +81,13 @@ const Page: NextPageWithLayout = () => {
                         border: "2px solid #805AD5",
                       }}
                     >
-                    <CardBody style={{ paddingBottom: 0 }}>
+                    <CardBody style={{ paddingBottom: 10, paddingTop: 10, marginLeft:10 }}>
                     <p>
                       This is a demo app for using a DID {" "}
                       <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
-                        (Verifiable Credential)
+                        (Polygon ID)
                       </a>{" "}
-                      gated dapp. It is to prove you were born before January 1, 2023 to use the dapp
+                      gated dapp. It is to prove that you were born before January 1, 2023 to use the dapp
                     </p>
                     <PolygonIDVerifier
                       publicServerURL={
@@ -111,7 +110,7 @@ const Page: NextPageWithLayout = () => {
               )}
             </div>
           </div>
-        </div>
+        
       </div>
     </>
   );

@@ -11,6 +11,8 @@ import {
   useDisclosure,
   Spinner,
   Center,
+  extendTheme,
+  ChakraProvider
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import QRCode from "react-qr-code";
@@ -19,6 +21,23 @@ import { io } from "socket.io-client";
 
 const linkDownloadPolygonIDWalletApp =
   "https://0xpolygonid.github.io/tutorials/wallet/wallet-overview/#quick-start";
+
+const theme = extendTheme({
+  components: {
+    Modal: {
+      baseStyle: (props) => ({
+        dialog: {
+          maxWidth: ["50%", "50%", "50%"],
+          minWidth: "45%",
+          bg: "#ffffff"
+        }
+      })
+    },
+    Button: {
+
+    }
+  }
+});
 
 function PolygonIDVerifier({
   credentialType,
@@ -113,8 +132,9 @@ function PolygonIDVerifier({
 
   return (
     <div>
+      <ChakraProvider theme={theme}>
       {sessionId ? (
-        <Button colorScheme="purple" onClick={onOpen} margin={4}>
+        <Button border="2px" colorScheme="purple" onClick={onOpen} margin={4}>
           Prove access rights
         </Button>
       ) : (
@@ -125,7 +145,7 @@ function PolygonIDVerifier({
         <Modal isOpen={isOpen} onClose={onClose} isCentered>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>
+            <ModalHeader color="white">
               Scan this QR code from your{" "}
               <a
                 href={linkDownloadPolygonIDWalletApp}
@@ -157,13 +177,14 @@ function PolygonIDVerifier({
                 <p>Type: {qrCodeData.body?.scope[0].query.type}</p>
               )}
 
-              {qrCodeData.body.message && <p>{qrCodeData.body.message}</p>}
+              {qrCodeData.body.message && <p>Message: {qrCodeData.body.message}</p>}
 
               {qrCodeData.body.reason && (
                 <p>Reason: {qrCodeData.body.reason}</p>
               )}
             </ModalBody>
 
+            <Center>  
             <ModalFooter>
               <Button
                 fontSize={"10px"}
@@ -183,9 +204,11 @@ function PolygonIDVerifier({
                 Get a {credentialType} VC <ExternalLinkIcon marginLeft={2} />
               </Button>
             </ModalFooter>
+            </Center>
           </ModalContent>
         </Modal>
       )}
+      </ChakraProvider>
     </div>
   );
 }
