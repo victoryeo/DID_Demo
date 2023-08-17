@@ -31,6 +31,12 @@ const Page: NextPageWithLayout = () => {
     console.log(process.env.NX_VERIFICATION_SERVER_LOCAL_HOST_URL)
   }, []);
 
+  useEffect(() => {
+    if (provedAccessBirthday == true) {
+      Router.push('/settings');
+    }
+  }, [provedAccessBirthday]);
+
   const [userDetailSignUp, setuserDetailSignUp] = useState<IUser | undefined>(
     undefined
   );
@@ -64,6 +70,7 @@ const Page: NextPageWithLayout = () => {
             <div className="right-wrap">
               {provedAccessBirthday ? (
                 <button type="button" onClick={handleClick}>
+                  Loading...
                 </button>
               ): (
                 <div className="right-box">
