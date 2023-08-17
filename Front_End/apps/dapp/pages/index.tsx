@@ -50,43 +50,9 @@ const Page: NextPageWithLayout = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const togglePassword = () => {
-    if (passwordType === 'password') {
-      setPasswordType('text');
-      return;
-    }
-    setPasswordType('password');
-  };
-
-  const authentication = () => {
-    event.preventDefault();
-    console.log(user);
-    let error = false;
-    setUser_acountErr('');
-    setpasswordErr('');
-    setUserErr('');
-    if (!user?.password || user?.password == '') {
-      setpasswordErr('Please enter password');
-      error = true;
-    } else {
-      setpasswordErr('');
-    }
-    if (!user?.username || user?.username == '') {
-      setUserErr('Please enter username');
-      error = true;
-    } else {
-      setUserErr('');
-    }
-    if (!error) {
-
-      Router.push('/token');
-    } else {
-
-      console.error('Invalid login details');
-      // setUser_acountErr('Invalid Login Detail');
-      //}
-    }
-  };
+  const handleClick = () => {
+    Router.push('/settings');
+  }
 
   return (
     <>
@@ -96,7 +62,10 @@ const Page: NextPageWithLayout = () => {
 
           <div className="col-md-6">
             <div className="right-wrap">
-              {atLogin ? (
+              {provedAccessBirthday ? (
+                <button type="button" onClick={handleClick}>
+                </button>
+              ): (
                 <div className="right-box">
                   <div className="logo">
                     <img src="/SettleMint_log-bk.png" alt="preview" />
@@ -114,12 +83,11 @@ const Page: NextPageWithLayout = () => {
                     >
                     <CardBody style={{ paddingBottom: 0 }}>
                     <p>
-                      This is a demo app for using a Polygon ID VC{" "}
+                      This is a demo app for using a DID {" "}
                       <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
                         (Verifiable Credential)
                       </a>{" "}
-                      gated dapp. Prove you were born before January 1, 2023 to use
-                      the dapp
+                      gated dapp. It is to prove you were born before January 1, 2023 to use the dapp
                     </p>
                     <PolygonIDVerifier
                       publicServerURL={
@@ -138,14 +106,6 @@ const Page: NextPageWithLayout = () => {
                     </Card>
                     </Container>
                   </Center>
-                </div>
-              ) : (
-                <div className="right-box">
-                  <div className="logo">
-                    <img src="/SettleMint_log-bk.png" alt="preview" />
-                  </div>
-                  <h1>Register</h1>
-
                 </div>
               )}
             </div>
