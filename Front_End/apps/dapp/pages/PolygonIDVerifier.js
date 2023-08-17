@@ -52,6 +52,7 @@ function PolygonIDVerifier({
 
   useEffect(() => {
     socket.on("connect", () => {
+      console.log("session connected")
       setSessionId(socket.id);
 
       // only watch this session's events
@@ -59,6 +60,7 @@ function PolygonIDVerifier({
         setSocketEvents((socketEvents) => [...socketEvents, arg]);
       });
     });
+    console.log("first load", publicServerURL, localServerURL)
   }, []);
 
   useEffect(() => {
