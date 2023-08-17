@@ -7,4 +7,4 @@
 
 ## Development server
 
-Run `nx serve dapp` for a dev server. Navigate to http://localhost:3100/. The app will automatically reload if you change any of the source files.
+Run `nx serve dapp` for a dev server. Navigate to http://localhost:3200/. The app will automatically reload if you change any of the source files.
