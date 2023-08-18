@@ -77,7 +77,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
         setCurrentBlockNumber(blockNumber);
       };
 
-      checkCurrentBlockNumber();
+      //checkCurrentBlockNumber();
     }
   }, [publicClient]);
 
@@ -126,10 +126,33 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                     {showConnectionInfo ? "Hide" : "Show"} connection information
                   </Button>
                 </Container>
+                  {showConnectionInfo && (
+                  <Box>
+                    {addressIsConnected ? (
+                      <p>Address {connectedAddress} is connected</p>
+                    ) : (
+                      <p>
+                        No account connected. Connect wallet to interact with dapp
+                      </p>
+                    )}
+                    {publicClient ? (
+                      <ul>
+                        <li>
+                          Currently using: {publicClient?.chain?.name} with Chain ID:{" "}
+                          {publicClient?.chain?.id}
+                        </li>
+                      </ul>
+                    ) : (
+                      <>
+                        Please install{" "}
+                        <a href="https://metamask.io/" target="_blank">
+                          Metamask
+                        </a>
+                      </>
+                    )}
+                  </Box>
+                  )}
                 </Box>
-                <div className="user-name">
-                  Logged in as: <span>{localStorage.getItem('user')}</span>
-                </div>
                 {isLogin ? (
                   <Button onClick={() => handleLogin()} color="inherit">
                     Logout
