@@ -1,13 +1,13 @@
 import { Router, useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
+//import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import { useEffect, useState } from 'react';
 import { AppModal } from './modal';
 import { Link } from '@mui/material';
-import { createPublicClient, http, Client } from "viem";
+import { createPublicClient, http, Client, PublicClient } from "viem";
 import { polygonMumbai } from "viem/chains";
 import {
   getAccount,
@@ -15,6 +15,17 @@ import {
   writeContract,
   waitForTransaction,
 } from "@wagmi/core";
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Button,
+  Spinner,
+  Card,
+  Center,
+  VStack,
+} from "@chakra-ui/react";
 
 type AppLayoutProps = {
   children?: React.ReactNode;
@@ -27,9 +38,11 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const [isLogin, setLogin] = useState<boolean>(false);
   const [ipfsCid, setIpfsCid] = useState<string>('');
   const [ipfsPath, setIpfsPath] = useState<string>('');
-  const [publicClient, setPublicClient] = useState<Client>();
+  const [publicClient, setPublicClient] = useState<PublicClient>();
   const [connectedAddress, setConnectedAddress] = useState<string>();
   const [addressIsConnected, setAddressIsConnected] = useState(false);
+  const [showConnectionInfo, setShowConnectionInfo] = useState(false);
+  const [currentBlockNumber, setCurrentBlockNumber] = useState<bigint>();
 
   const admin = localStorage.getItem('user') == 'admin' ? true : false;
   const user =
@@ -41,7 +54,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   useEffect(() => {
     // A Public Client is an interface to "public" JSON-RPC API methods
     // for sending transactions, reading from smart contracts
-    const newPublicClient: Client = createPublicClient({
+    const newPublicClient: PublicClient = createPublicClient({
       chain: polygonMumbai,
       transport: http(),
     });
@@ -59,15 +72,11 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 
   useEffect(() => {
     if (publicClient) {
-      const readCount = async () => {
-        await readCounterValue();
-      };
       const checkCurrentBlockNumber = async () => {
         const blockNumber = await publicClient.getBlockNumber();
         setCurrentBlockNumber(blockNumber);
       };
 
-      readCount();
       checkCurrentBlockNumber();
     }
   }, [publicClient]);
@@ -111,6 +120,13 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                     DID Demo
                   </span>
                 </Typography>
+                <Box>
+                <Container maxW={"80%"} py={4}>
+                  <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
+                    {showConnectionInfo ? "Hide" : "Show"} connection information
+                  </Button>
+                </Container>
+                </Box>
                 <div className="user-name">
                   Logged in as: <span>{localStorage.getItem('user')}</span>
                 </div>
