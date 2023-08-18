@@ -53,7 +53,6 @@ const Page: NextPageWithLayout = () => {
           <h2>Secret Page</h2>
         </div>
         <div className='text-center'>
-        <ConnectButton/>
           <label htmlFor="company-name">Secret Name</label><br></br>
           <input type="text" value={companyName} onChange={handleNameChange} name="companyName" style={{width:'30%'}}/><br></br>
           <label htmlFor="logo" className="mb-2">Secret Image</label><br></br>
