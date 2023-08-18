@@ -15,7 +15,7 @@ export const Options = () => {
   const options = [
     {
       label: 'Secret Page',
-      href: '/settings',
+      href: '/secret',
       hide: admin,
     },
     {

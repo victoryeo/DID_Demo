@@ -33,7 +33,7 @@ const Page: NextPageWithLayout = () => {
 
   useEffect(() => {
     if (provedAccessBirthday == true) {
-      Router.push('/settings');
+      Router.push('/secret');
     }
   }, [provedAccessBirthday]);
 
@@ -58,7 +58,7 @@ const Page: NextPageWithLayout = () => {
   };
 
   const handleClick = () => {
-    Router.push('/settings');
+    Router.push('/secret');
   }
 
   return (

@@ -6,7 +6,7 @@ import { DropZoneElement } from '@da-tokenization/components';
 import React, { ReactElement, useState } from 'react'
 import { uploadToipfs } from '@da-tokenization/components';
 import { toast } from 'react-hot-toast';
-import classes from './settings.module.css';
+import classes from './secret.module.css';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Page: NextPageWithLayout = () => {
