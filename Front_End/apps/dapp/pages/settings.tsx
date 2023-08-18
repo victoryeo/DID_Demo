@@ -49,12 +49,12 @@ const Page: NextPageWithLayout = () => {
       <div className="">
         <div className='header-area'>
 
-          <h2>Settings</h2>
+          <h2>Secret Page</h2>
         </div>
         <div className='text-center'>
-          <label htmlFor="company-name">Application Name</label><br></br>
+          <label htmlFor="company-name">Secret Name</label><br></br>
           <input type="text" value={companyName} onChange={handleNameChange} name="companyName" style={{width:'30%'}}/><br></br>
-          <label htmlFor="logo" className="mb-2">Application Logo</label><br></br>
+          <label htmlFor="logo" className="mb-2">Secret Image</label><br></br>
         
             <input type="file" name="logo"  className={classes.file} onChange={handleFileUpload} 
 
