@@ -7,6 +7,14 @@ import Button from '@mui/material/Button';
 import { useEffect, useState } from 'react';
 import { AppModal } from './modal';
 import { Link } from '@mui/material';
+import { createPublicClient, http, Client } from "viem";
+import { polygonMumbai } from "viem/chains";
+import {
+  getAccount,
+  readContract,
+  writeContract,
+  waitForTransaction,
+} from "@wagmi/core";
 
 type AppLayoutProps = {
   children?: React.ReactNode;
@@ -19,12 +27,50 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
   const [isLogin, setLogin] = useState<boolean>(false);
   const [ipfsCid, setIpfsCid] = useState<string>('');
   const [ipfsPath, setIpfsPath] = useState<string>('');
+  const [publicClient, setPublicClient] = useState<Client>();
+  const [connectedAddress, setConnectedAddress] = useState<string>();
+  const [addressIsConnected, setAddressIsConnected] = useState(false);
 
   const admin = localStorage.getItem('user') == 'admin' ? true : false;
   const user =
     localStorage.getItem('user') != `${localStorage.getItem('user')}`
       ? true
       : false;
+
+
+  useEffect(() => {
+    // A Public Client is an interface to "public" JSON-RPC API methods
+    // for sending transactions, reading from smart contracts
+    const newPublicClient: Client = createPublicClient({
+      chain: polygonMumbai,
+      transport: http(),
+    });
+    setPublicClient(newPublicClient);
+
+    // interval check whether user has connected or disconnected wallet
+    const interval = setInterval(() => {
+      const { address, isConnected } = getAccount();
+      setConnectedAddress(address);
+      setAddressIsConnected(isConnected);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (publicClient) {
+      const readCount = async () => {
+        await readCounterValue();
+      };
+      const checkCurrentBlockNumber = async () => {
+        const blockNumber = await publicClient.getBlockNumber();
+        setCurrentBlockNumber(blockNumber);
+      };
+
+      readCount();
+      checkCurrentBlockNumber();
+    }
+  }, [publicClient]);
 
   useEffect(() => {
     if (localStorage.getItem('user')) {
