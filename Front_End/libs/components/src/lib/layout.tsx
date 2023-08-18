@@ -25,15 +25,70 @@ import {
   Card,
   Center,
   VStack,
+  ChakraProvider,
+  extendTheme,
+  defineStyleConfig
 } from "@chakra-ui/react";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Options, User } from '@da-tokenization/components';
+import { CustomConnectButton } from "./CustomeConnectButton";
+import { Options } from '@da-tokenization/components';
+
+const Button1 = defineStyleConfig({
+  // The styles all button have in common
+  baseStyle: {
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    borderRadius: 'base', // <-- border radius is same for all variants and sizes
+  },
+  // Two sizes: sm and md
+  sizes: {
+    sm: {
+      fontSize: 'sm',
+      px: 4, // <-- px is short for paddingLeft and paddingRight
+      py: 3, // <-- py is short for paddingTop and paddingBottom
+    },
+    md: {
+      fontSize: 'md',
+      px: 6, // <-- these values are tokens from the design system
+      py: 4, // <-- these values are tokens from the design system
+    },
+  },
+  // Two variants: outline and solid
+  variants: {
+    outline: {
+      border: '2px solid',
+      borderColor: 'purple.500',
+      color: 'purple.500',
+    },
+    solid: {
+      bg: 'purple.500',
+      color: 'white',
+    },
+  },
+  // The default size and variant values
+  defaultProps: {
+    size: 'md',
+    variant: 'outline',
+  },
+})
+
+const theme = extendTheme({
+  components: {
+    Modal: {
+      baseStyle: (props) => ({
+        dialog: {
+          maxWidth: ["50%", "50%", "50%"],
+          minWidth: "45%",
+          bg: "#ffffff"
+        },
+      })
+    },
+    Button1,
+  }
+});
 
 type AppLayoutProps = {
   children?: React.ReactNode;
 };
-
-const ipfsPrefix = 'https://ipfs-90d4.gke-europe.settlemint.com/gateway/ipfs';
 
 export const AppLayout = ({ children }: AppLayoutProps) => {
   const router = useRouter();
@@ -184,6 +239,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
       ) : (
         <div>{children}</div>
       )}
+    
     </div>
   );
 };

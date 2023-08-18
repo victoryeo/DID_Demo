@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import router from 'next/router';
 import { useState, useEffect } from 'react';
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { CustomConnectButton } from "./CustomeConnectButton";
 
 export const Options = () => {
   const [isLogin, setLogin] = useState<boolean>(false);
@@ -56,7 +56,7 @@ export const Options = () => {
               );
             }
           })}
-          <ConnectButton/>
+          <CustomConnectButton/>
         </ul>
       )}
     </div>
