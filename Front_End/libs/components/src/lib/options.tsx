@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import router from 'next/router';
 import { useState, useEffect } from 'react';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export const Options = () => {
   const [isLogin, setLogin] = useState<boolean>(false);
@@ -13,75 +14,28 @@ export const Options = () => {
   const admin = localStorage.getItem('user') === 'admin' ? true : false;
   const options = [
     {
-      label: 'My Tokens',
-      href: '/token',
+      label: 'Secret Page',
+      href: '/settings',
       hide: admin,
     },
     {
-      label: 'Fund Manager',
-      href: '/listAsset',
-      hide: !admin,
-    },
-    // {
-    //   label: 'Tokenize',
-    //   href: '/createToken',
-    //   hide: !admin
-    // },
-    // {
-    //   label: 'Global Treasury',
-    //   href: '/mint',
-    //   hide: !admin
-    // },
-    {
-      label: 'Tokenized Funds',
-      href: '/totalAsset',
-      hide: !admin,
-    },
-    {
-      label: 'Request Management',
-      href: '/transfers',
-      hide: !admin,
-    },
-    {
-      label: 'Tokenized Funds',
-      href: '/totalAsset',
+      label: 'DID Management',
+      href: '/did',
       hide: admin,
     },
     {
-      label: 'Secondary Marketplace',
-      href: '/secondaryMarket',
+      label: 'Lock Access',
+      href: '/lock',
     },
-
-    {
-      label: 'User Management',
-      href: '/users',
-      hide: !admin,
-    },
-    {
-      label: 'Transaction Log',
-      href: '/transactions',
-      hide: !admin,
-    },
-    {
-      label: 'Burn Tokens',
-      href: '/burnToken',
-      hide: !admin,
-    },
-
     {
       label: 'User Profile',
       href: '/profile',
-    },
-    {
-      label: 'Settings',
-      href: '/settings',
-      hide: !admin,
     },
   ];
 
   return (
     <div>
-      {isLogin && (
+      {1 && (
         <ul className="list_type">
           {options.map(({ href, label, hide }) => {
             if (!hide) {
@@ -102,6 +56,7 @@ export const Options = () => {
               );
             }
           })}
+          <ConnectButton/>
         </ul>
       )}
     </div>

@@ -26,6 +26,8 @@ import {
   Center,
   VStack,
 } from "@chakra-ui/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { Options, User } from '@da-tokenization/components';
 
 type AppLayoutProps = {
   children?: React.ReactNode;
@@ -166,7 +168,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             <div className="outer-wrap">
               <div className="row">
                 <div className="col-md-2">
-                  
+                  <Options />
                 </div>
                 <div className="col-md-10">
                   {children}
