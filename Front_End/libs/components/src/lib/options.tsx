@@ -56,7 +56,6 @@ export const Options = () => {
               );
             }
           })}
-          <CustomConnectButton/>
         </ul>
       )}
     </div>
