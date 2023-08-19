@@ -30,6 +30,7 @@ import {
   defineStyleConfig
 } from "@chakra-ui/react";
 import { CustomConnectButton } from "./CustomeConnectButton";
+import WalletButton from './walletButton';
 import { Options } from '@da-tokenization/components';
 
 const Button1 = defineStyleConfig({
@@ -180,36 +181,16 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                 <Box>
                 <Container maxW={"80%"} py={4}>
                   <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
-                    {showConnectionInfo ? "Hide" : "Show"} connection information
+                    {showConnectionInfo ? "Hide" : "Show"} wallet button
                   </Button>
                 </Container>
                   {showConnectionInfo && (
                   <Box>
-                    {addressIsConnected ? (
-                      <p>Address {connectedAddress} is connected</p>
-                    ) : (
-                      <p>
-                        No account connected. Connect wallet to interact with dapp
-                      </p>
-                    )}
-                    {publicClient ? (
-                      <ul>
-                        <li>
-                          Currently using: {publicClient?.chain?.name} with Chain ID:{" "}
-                          {publicClient?.chain?.id}
-                        </li>
-                      </ul>
-                    ) : (
-                      <>
-                        Please install{" "}
-                        <a href="https://metamask.io/" target="_blank">
-                          Metamask
-                        </a>
-                      </>
-                    )}
+                    <WalletButton />
                   </Box>
                   )}
                 </Box>
+                &nbsp;
                 {isLogin ? (
                   <Button onClick={() => handleLogin()} color="inherit">
                     Logout
