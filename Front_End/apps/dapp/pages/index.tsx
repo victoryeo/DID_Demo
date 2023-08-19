@@ -33,6 +33,7 @@ const Page: NextPageWithLayout = () => {
 
   useEffect(() => {
     if (provedAccessBirthday == true) {
+      localStorage.setItem('user', 'polygonID');
       Router.push('/secret');
     }
   }, [provedAccessBirthday]);
@@ -64,7 +65,7 @@ const Page: NextPageWithLayout = () => {
   return (
     <>
       <div className="bg-info">
- 
+        <div className="row">
 
           <div className="col-md-6">
             <div className="right-wrap">
@@ -118,6 +119,7 @@ const Page: NextPageWithLayout = () => {
             </div>
           </div>
         
+        </div>
       </div>
     </>
   );

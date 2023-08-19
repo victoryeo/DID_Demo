@@ -35,7 +35,7 @@ export const Options = () => {
 
   return (
     <div>
-      {1 && (
+      {isLogin && (
         <ul className="list_type">
           {options.map(({ href, label, hide }) => {
             if (!hide) {
