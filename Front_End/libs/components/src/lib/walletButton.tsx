@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ConnectWalletClient, ConnectPublicClient } from "./viemClient";
+import styles from './components.module.css'
 
 export default function WalletButton() {
   //State variables for address & balance
@@ -42,17 +43,17 @@ export default function WalletButton() {
     <>
       <Status address={address} balance={balance} />
       {!isConnected ? 
-      <button className="px-8 py-2 rounded-md bg-[#1e2124] flex flex-row items-center justify-center border border-[#1e2124] hover:border hover:border-indigo-600 shadow-md shadow-indigo-500/10"
+      <button className={styles.connectbuttonStyle}
         onClick={handleConnect}
       >
       <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask Fox" style={{ width: "25px", height: "25px" }} />
 
-        <h2 className="mx-auto">Connect Wallet</h2>
+        <h3 className="mx-auto">Connect Wallet</h3>
       </button>
       :
-      <button className="px-8 py-2 rounded-md bg-[#1e2124] flex flex-row items-center justify-center border border-[#1e2124] hover:border hover:border-indigo-600 shadow-md shadow-indigo-500/10"
+      <button className={styles.disconnectbuttonStyle}
         onClick={handleDisconnect}
-      ><h2 className="mx-auto">Disconnect Wallet</h2>
+      ><h3 className="mx-auto">Disconnect Wallet</h3>
       </button>
       }
     </>
@@ -71,14 +72,14 @@ function Status({
     if (!address) {
       return (
         <div className="flex items-center">
-          <div className="border bg-red-600 border-red-600 rounded-full w-1.5 h-1.5 mr-2">
+          <div className="bg-red-600 border-red-600 rounded-full w-1.5 h-1.5 mr-2">
           </div>
           <div>Disconnected</div>
         </div>);
     }
     return (
       <div className="flex items-center w-full">
-        <div className="border bg-green-500 border-green-500 rounded-full w-1.5 h-1.5 mr-2"></div>
+        <div className="bg-green-500 border-green-500 rounded-full w-1.5 h-1.5 mr-2"></div>
         <div className="text-xs md:text-xs">{address} <br /> Balance: {balance.toString()}</div>
       </div>
     );

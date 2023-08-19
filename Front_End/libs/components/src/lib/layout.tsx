@@ -1,6 +1,6 @@
 import { Router, useRouter } from 'next/router';
 import AppBar from '@mui/material/AppBar';
-//import Box from '@mui/material/Box';
+import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 //import Button from '@mui/material/Button';
@@ -16,7 +16,7 @@ import {
   waitForTransaction,
 } from "@wagmi/core";
 import {
-  Box,
+  //Box,
   Container,
   Flex,
   Heading,
@@ -163,7 +163,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     <div>
       {!router.asPath.endsWith('/') && !router.asPath.endsWith('/signup') ? (
         <div className="sideba_content">
-          <Box sx={{ flexGrow: 1 }}>
+          <Box sx={{ height: '50%' }}>
             <AppBar position="static">
               <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -179,11 +179,14 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                   </span>
                 </Typography>
                 <Box>
-                <Container maxW={"80%"} py={4}>
+                <Container maxW={"100%"} py={4}>
                   <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
                     {showConnectionInfo ? "Hide" : "Show"} wallet button
                   </Button>
                 </Container>
+                </Box>
+                &nbsp;
+                <Box>
                   {showConnectionInfo && (
                   <Box>
                     <WalletButton />
