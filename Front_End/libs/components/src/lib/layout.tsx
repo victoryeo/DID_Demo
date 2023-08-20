@@ -178,13 +178,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                     DID Demo
                   </span>
                 </Typography>
-                <Box>
-                <Container maxW={"100%"} py={4}>
-                  <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
-                    {showConnectionInfo ? "Hide" : "Show"} wallet button
-                  </Button>
-                </Container>
-                </Box>
+
                 &nbsp;
                 <Box>
                   {showConnectionInfo && (
@@ -192,6 +186,14 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
                     <WalletButton />
                   </Box>
                   )}
+                </Box>
+                &nbsp;
+                <Box>
+                <Container maxW={"100%"} py={4}>
+                  <Button onClick={() => setShowConnectionInfo(!showConnectionInfo)}>
+                    {showConnectionInfo ? "Hide" : "Show"} wallet button
+                  </Button>
+                </Container>
                 </Box>
                 &nbsp;
                 {isLogin ? (
