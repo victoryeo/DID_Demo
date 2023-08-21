@@ -91,11 +91,11 @@ const Page: NextPageWithLayout = () => {
                     >
                     <CardBody style={{ paddingBottom: 10, paddingTop: 10, marginLeft:10 }}>
                     <p>
-                      This is a demo app for using a DID {" "}
+                      This dapp is using DID {" "}
                       <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
                         (Polygon ID)
                       </a>{" "}
-                      gated dapp. It is to prove that you were born before January 1, 2023 to use the dapp
+                      for doing KYC. The DID should contain the birthday credential. It is to prove that you were born before January 1, 2023.
                     </p>
                     <PolygonIDVerifier
                       publicServerURL={
