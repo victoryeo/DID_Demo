@@ -10,4 +10,4 @@ https://issuer-demo.polygonid.me/
   
 4. Create a VC on the issuer
   
-5. Use Polygon ID mobile app to scan QR code and add the VC to the wallet
+5. Use Polygon ID mobile app to scan the QR code and add the VC to the wallet
