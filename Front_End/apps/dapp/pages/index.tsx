@@ -95,7 +95,7 @@ const Page: NextPageWithLayout = () => {
                       <a href="https://0xpolygonid.github.io/tutorials/#core-concepts-of-polygon-id-verifiable-credentials-identity-holder-issuer-and-verifier-triangle-of-trust">
                         (Polygon ID)
                       </a>{" "}
-                      for doing KYC. The DID should contain the birthday credential. It is to prove that you were born before January 1, 2023.
+                      for doing KYC verification. The VC should contain the birthday credential. It is to prove that you were born before January 1, 2023.
                     </p>
                     <PolygonIDVerifier
                       publicServerURL={
