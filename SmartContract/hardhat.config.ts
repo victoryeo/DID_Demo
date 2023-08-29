@@ -25,7 +25,7 @@ const config: HardhatUserConfig = {
     hardhat: {
         chainId: 31337,
     },
-    goerli: {
+    mumbai: {
         chainId: 80001,
         url: MUMBAI_RPC_URL,
         accounts: [PRIVATE_KEY]

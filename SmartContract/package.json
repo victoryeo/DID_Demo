@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx hardhat test",
-    "mintnft": "npx hardhat run scripts/mintNft_web3.ts"
+    "test": "npx hardhat test"
   },
   "keywords": [],
   "author": "",
