@@ -11,6 +11,7 @@ async function main() {
   const VerifierMTPWrapper = await ethers.getContractFactory(
     verifierContractWrapperName
   );
+  console.log("VerifierMTPWrapper",VerifierMTPWrapper)
   const verifierWrapper = await VerifierMTPWrapper.deploy();
 
   await verifierWrapper.deployed();
@@ -23,6 +24,7 @@ async function main() {
   const CredentialAtomicQueryValidator = await ethers.getContractFactory(
     validatorContractName
   );
+  console.log("CredentialAtomicQueryValidator",CredentialAtomicQueryValidator)
 
   const CredentialAtomicQueryValidatorProxy = await upgrades.deployProxy(
     CredentialAtomicQueryValidator,
