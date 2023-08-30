@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "helmchart.fullname" . }}
+spec:
+  type: {{ .Values.deployer.service.type }}
+  ports:
+    - port: {{ .Values.deployer.service.port }}
+      targetPort: {{ .Values.deployer.service.targetPort }}
+      protocol: TCP
+      name: deployer-backend      
+  selector:
+    {{- include "helmchart.selectorLabels" . | nindent 4 }}
