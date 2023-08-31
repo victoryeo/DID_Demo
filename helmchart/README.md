@@ -1,9 +1,9 @@
 ## Repo to store helm chart 
 #### It is an example of hello world image, setup with 
 #### nginx ingress controller
-#### use ingress ip address to access the hello world app
+#### It uses ingress ip address to access the hello world app
 
-##### steps
+##### Steps to run:
 
 helm install deployer deployer
 
