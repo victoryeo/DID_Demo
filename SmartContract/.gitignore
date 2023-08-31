@@ -7,3 +7,4 @@
 .secret.json
 /typechain-types
 /deployments
+deploy_validator_output.json

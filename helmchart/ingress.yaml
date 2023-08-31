@@ -14,11 +14,11 @@ spec:
   rules:
   - http:
       paths:
-      - path: /deployer
+      - path: /helloworld
         pathType: Prefix
         backend:
           service:
-            name: deployer
+            name: helloworld
             port:
               number: 80
       - path: /nft
@@ -45,6 +45,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: deployer
+            name: helloworld
             port: 
               number: 80

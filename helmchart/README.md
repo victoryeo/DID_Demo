@@ -5,7 +5,7 @@
 
 ##### Steps to run:
 
-helm install deployer deployer
+helm install helloworld helloworld
 
 helm install ingress-nginx ingress-nginx/ingress-nginx \
     --set controller.replicaCount=1 

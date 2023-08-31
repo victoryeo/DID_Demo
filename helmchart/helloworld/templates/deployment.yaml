@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "helmchart.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.deployer.autoscaling.enabled }}
+  {{- if not .Values.helloworld.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
@@ -13,40 +13,40 @@ spec:
       {{- include "helmchart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.deployer.podAnnotations }}
+      {{- with .Values.helloworld.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
         {{- include "helmchart.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.deployer.imagePullSecrets }}
+      {{- with .Values.helloworld.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       serviceAccountName: {{ include "helmchart.serviceAccountName" . }}
       securityContext:
-        {{- toYaml .Values.deployer.podSecurityContext | nindent 8 }}
+        {{- toYaml .Values.helloworld.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
-            {{- toYaml .Values.deployer.securityContext | nindent 12 }}
-          image: "{{ .Values.deployer.image.repository }}:{{ .Values.deployer.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.deployer.image.pullPolicy }}
+            {{- toYaml .Values.helloworld.securityContext | nindent 12 }}
+          image: "{{ .Values.helloworld.image.repository }}:{{ .Values.helloworld.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.helloworld.image.pullPolicy }}
           ports:
-            - containerPort: 4004
+            - containerPort: 80
               protocol: TCP
           resources:
-            {{- toYaml .Values.deployer.resources | nindent 12 }}          
-      {{- with .Values.deployer.nodeSelector }}
+            {{- toYaml .Values.helloworld.resources | nindent 12 }}          
+      {{- with .Values.helloworld.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.deployer.affinity }}
+      {{- with .Values.helloworld.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.deployer.tolerations }}
+      {{- with .Values.helloworld.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
