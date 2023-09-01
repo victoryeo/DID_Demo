@@ -1,0 +1,6 @@
+controller:
+  service:
+    ports:
+      http: 4002
+    #annotations:
+      #"service.beta.kubernetes.io/azure-load-balancer-resource-group": "k8srg"
