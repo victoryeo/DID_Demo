@@ -21,13 +21,6 @@ spec:
             name: helloworld
             port:
               number: 80
-      - path: /nft
-        pathType: Prefix
-        backend:
-          service:
-            name: nft-service
-            port:
-              number: 3000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
