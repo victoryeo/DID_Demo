@@ -17,7 +17,7 @@
     "paths": {
       "@da-tokenization/components": ["libs/components/src/index.ts"],
       "@da-tokenization/database": ["libs/database/src/index.ts"],
-      "@da-tokenization/providers": ["libs/providers/src/index.ts"],
+      "@da-tokenization/providers": ["libs/providers/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
