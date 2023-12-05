@@ -18,13 +18,13 @@ export default function WalletButton() {
         const publicClient = ConnectPublicClient();
     
         // Performs Wallet Action to retrieve wallet address
-        const [address] = await walletClient.getAddresses();
+        //const [address] = await walletClient.getAddresses();
         
         // Performs Public Action to retrieve address balance
-        const balance = await publicClient.getBalance({ address });
+        //const balance = await publicClient.getBalance({ address });
         // Update values for address & balance state variable
-        setAddress(address);
-        setBalance(balance);
+        //setAddress(address);
+        //setBalance(balance);
         setIsConnected(true)
     } catch (error) {
         // Error handling
@@ -34,7 +34,7 @@ export default function WalletButton() {
 
   async function handleDisconnect() {
     setAddress('');
-    setBalance(0);
+    setBalance(BigInt(0));
     setIsConnected(false)
   }
 

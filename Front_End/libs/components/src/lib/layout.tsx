@@ -130,10 +130,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
 
   useEffect(() => {
     if (publicClient) {
-      const checkCurrentBlockNumber = async () => {
-        const blockNumber = await publicClient.getBlockNumber();
-        setCurrentBlockNumber(blockNumber);
-      };
+      
 
       //checkCurrentBlockNumber();
     }

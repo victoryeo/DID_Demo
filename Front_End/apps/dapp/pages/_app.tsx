@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { useApollo } from '../hooks/use-apollo';
 import { Toaster } from 'react-hot-toast';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { AppLayout, CustomConnectButton } from '@da-tokenization/components';
+import { AppLayout } from '@da-tokenization/components';
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import router from 'next/router';
@@ -17,7 +17,6 @@ import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { polygonMumbai } from "wagmi/chains";
 import { getDefaultWallets, RainbowKitProvider, midnightTheme } from "@rainbow-me/rainbowkit";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const { chains, publicClient } = configureChains(
   [polygonMumbai],
