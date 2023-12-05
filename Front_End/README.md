@@ -1,4 +1,6 @@
 # DID Demo App
+Use node 18.x  
+yarn install  
 
 ## Legagy Dependency
 ### find the dependency
