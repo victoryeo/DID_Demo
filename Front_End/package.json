@@ -22,6 +22,7 @@
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.6",
     "@nextui-org/react": "^1.0.0-beta.12",
+    "@swc/helpers": "^0.5.3",
     "@walletconnect/web3-provider": "^1.8.0",
     "antd": "^5.2.2",
     "apollo3-cache-persist": "^0.14.1",
