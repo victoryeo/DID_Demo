@@ -88,6 +88,23 @@
       "name": "rm-default-collection-npm-scope"
     },
     {
+      "cli": "nx",
+      "version": "17.3.0-beta.6",
+      "description": "Updates the nx wrapper.",
+      "implementation": "./src/migrations/update-17-3-0/update-nxw",
+      "package": "nx",
+      "name": "17.3.0-update-nx-wrapper"
+    },
+    {
+      "cli": "nx",
+      "version": "18.0.0-beta.2",
+      "description": "Updates .env to disabled adding plugins when generating projects in an existing Nx workspace",
+      "implementation": "./src/migrations/update-18-0-0/disable-crystal-for-existing-workspaces",
+      "x-repair-skip": true,
+      "package": "nx",
+      "name": "18.0.0-disable-adding-plugins-for-existing-workspaces"
+    },
+    {
       "version": "15.7.0-beta.0",
       "description": "Split global configuration files (e.g., workspace.json) into individual project.json files.",
       "cli": "nx",
@@ -162,6 +179,22 @@
     {
       "cli": "nx",
       "version": "16.0.0-beta.1",
+      "description": "Replace @nx/eslint-plugin with @nx/eslint-plugin",
+      "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
+      "package": "@nx/eslint-plugin",
+      "name": "update-16-0-0-add-nx-packages"
+    },
+    {
+      "cli": "nx",
+      "version": "17-2-6-beta.1",
+      "description": "Rename workspace rules from @nx/workspace/name to @nx/workspace-name",
+      "implementation": "./src/migrations/update-17-2-6-rename-workspace-rules/rename-workspace-rules",
+      "package": "@nx/eslint-plugin",
+      "name": "update-17-2-6-rename-workspace-rules"
+    },
+    {
+      "cli": "nx",
+      "version": "16.0.0-beta.1",
       "description": "Replace @nx/cypress with @nx/cypress",
       "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
       "package": "@nx/cypress",
@@ -229,50 +262,17 @@
       "name": "update-typescript-eslint"
     },
     {
-      "cli": "nx",
-      "version": "16.0.0-beta.1",
-      "description": "Replace @nx/eslint-plugin with @nx/eslint-plugin",
-      "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
-      "package": "@nx/eslint-plugin",
-      "name": "update-16-0-0-add-nx-packages"
+      "version": "17.2.0-beta.0",
+      "description": "Simplify eslintFilePatterns",
+      "implementation": "./src/migrations/update-17-2-0/simplify-eslint-patterns",
+      "package": "@nx/eslint",
+      "name": "simplify-eslint-patterns"
     },
     {
-      "version": "15.8.0-beta.0",
-      "cli": "nx",
-      "description": "Update jest configs to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
-      "factory": "./src/migrations/update-15-8-0/update-configs-jest-29",
-      "package": "@nx/jest",
-      "name": "update-configs-jest-29"
-    },
-    {
-      "version": "15.8.0-beta.0",
-      "cli": "nx",
-      "description": "Update jest test files to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
-      "factory": "./src/migrations/update-15-8-0/update-tests-jest-29",
-      "package": "@nx/jest",
-      "name": "update-tests-jest-29"
-    },
-    {
-      "cli": "nx",
-      "version": "16.0.0-beta.1",
-      "description": "Replace @nx/jest with @nx/jest",
-      "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
-      "package": "@nx/jest",
-      "name": "update-16-0-0-add-nx-packages"
-    },
-    {
-      "cli": "nx",
-      "version": "16.5.0-beta.2",
-      "description": "Add test-setup.ts to ignored files in production input",
-      "implementation": "./src/migrations/update-16-5-0/add-test-setup-to-inputs-ignore",
-      "package": "@nx/jest",
-      "name": "add-test-setup-to-inputs-ignore"
-    },
-    {
-      "version": "17.1.0-beta.2",
-      "description": "Move jest executor options to nx.json targetDefaults",
-      "implementation": "./src/migrations/update-17-1-0/move-options-to-target-defaults",
-      "package": "@nx/jest",
+      "version": "17.2.9",
+      "description": "Move executor options to target defaults",
+      "implementation": "./src/migrations/update-17-2-9/move-options-to-target-defaults",
+      "package": "@nx/eslint",
       "name": "move-options-to-target-defaults"
     },
     {
@@ -317,6 +317,53 @@
     },
     {
       "cli": "nx",
+      "version": "18.0.0-beta.0",
+      "description": "Add NX_MF_DEV_SERVER_STATIC_REMOTES to inputs for task hashing when '@nx/webpack:webpack' is used for Module Federation.",
+      "factory": "./src/migrations/update-18-0-0/add-mf-env-var-to-target-defaults",
+      "package": "@nx/react",
+      "name": "add-module-federation-env-var-to-target-defaults"
+    },
+    {
+      "version": "15.8.0-beta.0",
+      "cli": "nx",
+      "description": "Update jest configs to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-configs-jest-29",
+      "package": "@nx/jest",
+      "name": "update-configs-jest-29"
+    },
+    {
+      "version": "15.8.0-beta.0",
+      "cli": "nx",
+      "description": "Update jest test files to support jest 29 changes (https://jestjs.io/docs/upgrading-to-jest29)",
+      "factory": "./src/migrations/update-15-8-0/update-tests-jest-29",
+      "package": "@nx/jest",
+      "name": "update-tests-jest-29"
+    },
+    {
+      "cli": "nx",
+      "version": "16.0.0-beta.1",
+      "description": "Replace @nx/jest with @nx/jest",
+      "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
+      "package": "@nx/jest",
+      "name": "update-16-0-0-add-nx-packages"
+    },
+    {
+      "cli": "nx",
+      "version": "16.5.0-beta.2",
+      "description": "Add test-setup.ts to ignored files in production input",
+      "implementation": "./src/migrations/update-16-5-0/add-test-setup-to-inputs-ignore",
+      "package": "@nx/jest",
+      "name": "add-test-setup-to-inputs-ignore"
+    },
+    {
+      "version": "17.1.0-beta.2",
+      "description": "Move jest executor options to nx.json targetDefaults",
+      "implementation": "./src/migrations/update-17-1-0/move-options-to-target-defaults",
+      "package": "@nx/jest",
+      "name": "move-options-to-target-defaults"
+    },
+    {
+      "cli": "nx",
       "version": "16.0.0-beta.1",
       "description": "Replace @nx/next with @nx/next",
       "implementation": "./src/migrations/update-16-0-0-add-nx-packages/update-16-0-0-add-nx-packages",
@@ -338,6 +385,14 @@
       "implementation": "./src/migrations/update-16-4-0/update-nx-next-dependency",
       "package": "@nx/next",
       "name": "update-16-4-0-update-next-dependency"
+    },
+    {
+      "cli": "nx",
+      "version": "17.2.7",
+      "description": "Remove patched eslint rule for @next/next/no-html-link-for-pages",
+      "implementation": "./src/migrations/update-17-2-7/remove-eslint-rules-patch",
+      "package": "@nx/next",
+      "name": "update-17-2-7"
     }
   ]
 }

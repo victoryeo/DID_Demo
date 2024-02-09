@@ -5,14 +5,13 @@ import './styles.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useApollo } from '../hooks/use-apollo';
 import { Toaster } from 'react-hot-toast';
-// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { AppLayout } from '@da-tokenization/components';
 import { ReactElement, ReactNode } from 'react';
 import { NextPage } from 'next';
 import router from 'next/router';
 import { ModalProvider } from '@da-tokenization/providers';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -34,7 +33,6 @@ function CustomApp({
   }
 
   return (
-   
     <ApolloProvider client={client}>
       <ModalProvider>
         <Head>
@@ -68,7 +66,6 @@ function CustomApp({
         </AppLayout>
       </ModalProvider>
     </ApolloProvider>
-
   );
 }
 
