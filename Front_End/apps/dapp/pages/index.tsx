@@ -28,7 +28,8 @@ const Page: NextPageWithLayout = () => {
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
 
   useEffect(() => {
-    console.log(process.env.NX_VERIFICATION_SERVER_LOCAL_HOST_URL)
+    console.log("useEffect", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_LOCAL_HOST_URL)
+    console.log("useEffect", process.env.NEXT_PUBLIC_TESTMENT_API_URL)
   }, []);
 
   useEffect(() => {
@@ -99,10 +100,10 @@ const Page: NextPageWithLayout = () => {
                     </p>
                     <PolygonIDVerifier
                       publicServerURL={
-                        process.env.NX_VERIFICATION_SERVER_PUBLIC_URL
+                        process.env.NEXT_PUBLIC_VERIFICATION_SERVER_PUBLIC_URL
                       }
                       localServerURL={
-                        process.env.NX_VERIFICATION_SERVER_LOCAL_HOST_URL
+                        process.env.NEXT_PUBLIC_VERIFICATION_SERVER_LOCAL_HOST_URL
                       }
                       credentialType={"KYCAgeCredential"}
                       issuerOrHowToLink={
