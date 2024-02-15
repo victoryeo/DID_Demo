@@ -40,7 +40,12 @@ const authRequests = new Map();
 const apiPath = {
   getAuthQr: "/api/get-auth-qr",
   handleVerification: "/api/verification-callback",
+  helloWorld: "/api/hello-world",
 };
+
+app.get(apiPath.helloWorld, (req, res) => {
+  helloWorld(req, res);
+})
 
 app.get(apiPath.getAuthQr, (req, res) => {
   getAuthQr(req, res);
@@ -61,6 +66,14 @@ const socketMessage = (fn, status, data) => ({
   status,
   data,
 });
+
+// handleVerification verifies the proof after get-auth-qr callbacks
+async function helloWorld(req, res) {
+  return res
+    .status(200)
+    .set("Content-Type", "application/json")
+    .send("Hello world");
+}
 
 // GetQR returns auth request
 async function getAuthQr(req, res) {
