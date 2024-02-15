@@ -29,7 +29,7 @@ const Page: NextPageWithLayout = () => {
 
   useEffect(() => {
     console.log("useEffect", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_LOCAL_HOST_URL)
-    console.log("useEffect", process.env.NEXT_PUBLIC_TESTMENT_API_URL)
+    console.log("useEffect", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_PUBLIC_URL)
   }, []);
 
   useEffect(() => {
