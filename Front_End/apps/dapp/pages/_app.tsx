@@ -38,7 +38,7 @@ function CustomApp({
         <Head>
           <title>DID Demo</title>
           <link rel="shortcut icon" href="/favicon.jpg" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta http-equiv="Content-Security-Policy" name="viewport" content="upgrade-insecure-requests,width=device-width, initial-scale=1" />
         </Head>
         <Toaster
           position="bottom-center"

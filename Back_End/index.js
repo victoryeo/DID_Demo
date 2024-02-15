@@ -4,6 +4,7 @@ const getRawBody = require("raw-body");
 const { Server } = require("socket.io");
 const cors = require("cors");
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
 
@@ -31,7 +32,7 @@ const options = {
   cert: fs.readFileSync('fullchain.pem')
 };
 
-const server = https
+const server = http
   .createServer(
     options,
     app
