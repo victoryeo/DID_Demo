@@ -28,8 +28,8 @@ const Page: NextPageWithLayout = () => {
   const [provedAccessBirthday, setProvedAccessBirthday] = useState(false);
 
   useEffect(() => {
-    console.log("useEffect", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_LOCAL_HOST_URL)
-    console.log("useEffect", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_PUBLIC_URL)
+    console.log("useEffect1", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_LOCAL_HOST_URL)
+    console.log("useEffect2", process.env.NEXT_PUBLIC_VERIFICATION_SERVER_PUBLIC_URL)
   }, []);
 
   useEffect(() => {
