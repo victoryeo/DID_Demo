@@ -79,7 +79,7 @@ function PolygonIDVerifier({
         setSocketEvents((socketEvents) => [...socketEvents, arg]);
       });
     });
-    console.log("first load", publicServerURL, localServerURL)
+    console.log("Pg first load", publicServerURL, localServerURL)
   }, []);
 
   useEffect(() => {
