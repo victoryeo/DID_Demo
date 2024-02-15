@@ -3,6 +3,8 @@ const { auth, resolver, loaders } = require("@iden3/js-iden3-auth");
 const getRawBody = require("raw-body");
 const { Server } = require("socket.io");
 const cors = require("cors");
+const https = require('https');
+const fs = require('fs');
 const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
 
 require("dotenv").config();
@@ -24,9 +26,21 @@ app.get("/", (req, res) => {
   );
 });
 
-const server = app.listen(port, () => {
-  console.log(`server running on port ${port}`);
-});
+const options = {
+  key: fs.readFileSync('privkey.pem'),
+  cert: fs.readFileSync('fullchain.pem')
+};
+
+const server = https
+  .createServer(
+    options,
+    app
+  )
+  .listen(port, function () {
+    console.log(
+      `server running on port ${port}`
+    );
+  });
 
 const io = new Server(server, {
   cors: {
