@@ -32,14 +32,8 @@ const options = {
   cert: fs.readFileSync('fullchain.pem')
 };
 
-const server = http
-  .createServer(
-    app
-  )
-  .listen(port, function () {
-    console.log(
-      `server running on port ${port}`
-    );
+const server = app.listen(port, () => {
+    console.log(`server running on port ${port}`);
   });
 
 const io = new Server(server, {
