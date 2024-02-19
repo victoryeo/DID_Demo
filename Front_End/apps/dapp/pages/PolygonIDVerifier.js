@@ -84,7 +84,15 @@ function PolygonIDVerifier({
 
   useEffect(() => {
     const fetchQrCode = async () => {
-      const response = await fetch(getQrCodeApi(sessionId));
+      const requestOptions = {
+        method: 'GET',
+        mode: 'cors', // Change the mode value to 'cors'
+        headers: {
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Origin': '*',
+        },
+      };
+      const response = await fetch(getQrCodeApi(sessionId), requestOptions);
       const data = await response.text();
       console.log(data)
       return JSON.parse(data);
