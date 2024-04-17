@@ -6,6 +6,8 @@ const cors = require("cors");
 const https = require('https');
 const http = require('http');
 const fs = require('fs');
+const { cacheLoader } = require('@0xpolygonid/js-sdk');
+const path = require('path');
 const { humanReadableAuthReason, proofRequest } = require("./proofRequest");
 
 require("dotenv").config();
@@ -154,9 +156,17 @@ async function handleVerification(req, res) {
   };
 
   // Locate the directory that contains circuit's verification keys
-  const verificationKeyloader = new loaders.FSKeyLoader(keyDIR);
-  const sLoader = new loaders.UniversalSchemaLoader("ipfs.io");
-  const verifier = new auth.Verifier(verificationKeyloader, sLoader, resolvers);
+  //const verificationKeyloader = new loaders.FSKeyLoader(keyDIR);
+  //const sLoader = new loaders.UniversalSchemaLoader("ipfs.io");
+  //const verifier = new auth.Verifier(verificationKeyloader, sLoader, resolvers);
+  const schemaLoader = cacheLoader({
+    ipfsNodeURL: 'ipfs.io'
+  });
+  const verifier = await auth.Verifier.newVerifier({
+    stateResolver: resolvers,
+    circuitsDir: path.join(__dirname, keyDIR),
+    documentLoader: schemaLoader
+  });
 
   try {
     const opts = {
