@@ -160,11 +160,11 @@ async function handleVerification(req, res) {
   //const sLoader = new loaders.UniversalSchemaLoader("ipfs.io");
   //const verifier = new auth.Verifier(verificationKeyloader, sLoader, resolvers);
   const schemaLoader = cacheLoader({
-    ipfsNodeURL: 'ipfs.io'
+    ipfsNodeURL: 'https://ipfs.io'
   });
   const verifier = await auth.Verifier.newVerifier({
     stateResolver: resolvers,
-    circuitsDir: path.join(__dirname, keyDIR),
+    circuitsDir: path.join(__dirname, './keys'),
     documentLoader: schemaLoader
   });
 
