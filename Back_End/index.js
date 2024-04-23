@@ -181,7 +181,7 @@ async function handleVerification(req, res) {
     return res
       .status(200)
       .set("Content-Type", "application/json")
-      .send("User " + userId + " succesfully authenticated");
+      .send(authResponse);
   } catch (error) {
     console.log(
       "Error handling verification: Double check the value of your RPC_URL_AMOY in the .env file. Are you using a valid api key for Polygon Amoy from your RPC provider? Visit https://alchemy.com/?r=zU2MTQwNTU5Mzc2M and create a new app with Polygon Amoy"
